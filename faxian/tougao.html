@@ -1,0 +1,23 @@
+<ion-nav-bar class="bar-royal" name="tougao">
+  <ion-nav-title >
+    <button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">投稿</span>
+  </ion-nav-title>
+
+  <ion-content class="has-header">
+    <div class="row" style="background-color: rgb(136,106,234);color: white;text-align: center">
+      <div class="col cc" ui-sref="tab.hufu.tuijianH">推荐</div>
+      <div class="col cc" ui-sref="tab.hufu.huazhuang">化妆</div>
+      <div class="col cc" ui-sref="tab.hufu.hufu">护肤</div>
+      <div class="col cc" ui-sref="tab.hufu.faxing">发型</div>
+      <div class="col cc" ui-sref="tab.hufu.meijia">美甲</div>
+      <div class="col cc" ui-sref="tab.hufu.cepin">测评</div>
+    </div>
+    <div ui-view="tuijianH" style="width: 100%;"></div>
+    <div ui-view="huazhuang" style="width: 100%;  "></div>
+    <div ui-view="hufu" style="width: 100%;  "></div>
+    <div ui-view="faxing" style="width: 100%; "></div>
+    <div ui-view="meijia" style="width: 100%; "></div>
+    <div ui-view="cepin" style="width: 100%; height: 600px "></div>
+  </ion-content>
+</ion-nav-bar>
+

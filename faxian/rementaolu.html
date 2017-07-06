@@ -1,0 +1,49 @@
+<div>
+  <ion-view>
+      <ion-nav-title style="">
+        <button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">{{mine.data.board.title}}</span>
+      </ion-nav-title>
+    <ion-content overflow-scroll="true">
+      <!--下拉刷新-->
+      <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <div >
+        <a class="item item-thumbnail-left" style="background:url('{{mine.data.board.thumb}}') no-repeat; background-size: 100%;background-position-y: -200px; opacity: 0.8">
+          <img ng-src="{{mine.data.board.thumb}}" style="border-radius: 50%">
+          <h2 style="line-height:40px;color: white">{{mine.data.board.title}}</h2>
+          <p style="color: white;">评论量: {{mine.data.board.dailyCount}}</p>
+        </a>
+      </div>
+      <div class="item ">
+          <p ng-repeat="item in mine.data.stickTopics" style="line-height: 30px">{{item.title}}</p>
+      </div>
+
+      <div class="list card" ng-repeat="item in mine.data.topics" ng-click="renmenDetailFn($index)">
+        <div class="item item-avatar" >
+          <img ng-src="{{item.userAvatar}}">
+          <h3>{{item.userNick}}</h3>
+          <p>{{item.lastReplyTime}}</p>
+        </div>
+        <h5>{{item.title}}</h5>
+        <p style="font-size: 13px">{{item.content}}</p>
+        <div ng-repeat="item in item.photoes">
+          <img style="width:33%;float: left" ng-src="{{item.thumb}}">
+        </div>
+      </div>
+      <!--上拉加载-->
+      <ion-infinite-scroll
+        icon="ion-loading-c"
+        ng-if="!moredata"
+        on-infinite="loadMore()"
+        immediate-check="false"
+        distance="10%">
+      </ion-infinite-scroll>
+
+
+    </ion-content>
+
+  </ion-view>
+
+</div>
