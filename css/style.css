@@ -1,0 +1,29 @@
+/* Empty. Add your own CSS if you like */
+/*推荐里面的样式*/
+.starTitle{
+  color:red;
+  float:left;
+  margin-left: 1.2%
+}
+.moreTile{
+  float: right;
+  color: darkgray;
+  margin-right: 1.2%
+}
+.dataStar{
+  float: left;
+  width: 50%;
+  padding:0px 1.2%;
+}
+.cc{
+  color: white;
+}
+.cc:hover{
+  color:#c9e2b3;
+}
+.aaa{
+  color: #000;
+}
+.aaa:hover{
+  color: darkred;
+}
