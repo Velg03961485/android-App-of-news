@@ -1,0 +1,22 @@
+<div name="newsDetail">
+  <ion-view>
+    <ion-nav-title><button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">NBA资讯</span></ion-nav-title>
+    <ion-content>
+      <!--下拉刷新-->
+      <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <h4>{{mine.data.title}}</h4>
+      <span style="padding-left: 2%;color: #4c4c4c;">{{data.index}}</span>
+      <span style="padding-left: 10%;color: #4c4c4c;">来源: {{mine.data.source}}</span>
+      <span style="padding-left:35%;color:#4c4c4c">分享: <i class="icon ion-android-share-alt" ng-click="shareFn()"></i></span>
+      <div style="text-align: center;margin-top: 3%">
+        <img src="{{mine.data.image}}" style="width: 96%" ng-show="isShow">
+      </div>
+      <div id="content" style="width: 96%;padding-left: 3%"></div>
+      <iframe id="myIframe" width="100%" height="300px"></iframe>
+    </ion-content>
+  </ion-view>
+</div>
+

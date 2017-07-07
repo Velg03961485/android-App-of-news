@@ -1,0 +1,25 @@
+<div>
+  <ion-view>
+    <!--<ion-nav-title><button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">搜索</span></ion-nav-title>-->
+    <ion-nav-title><button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">搜索🔍</span></ion-nav-title>
+    <ion-content>
+      <ion-header-bar class="item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="search" placeholder="🔍请输入剧名" ng-model="data.wd" ng-change="change()">
+        </label>
+        <button class="button button-clear" ng-click="goBack()" style="color: #000;">取消</button>
+      </ion-header-bar>
+      <div ng-show="isShow">
+        <h4 style="margin-left: 10px">热门搜索</h4>
+        <button class="button" style="display: inline-block;margin:10px 10px;background:snow;" ng-repeat="item in data.hotWords" ng-click="hotWordsFn($index)">
+        {{item}}
+      </button>
+      </div>
+      <ul class="list">
+        <li class="item" ng-repeat="item in result" ng-click="searchListFn($index)">
+          {{item}}
+        </li>
+      </ul>
+    </ion-content>
+  </ion-view>
+</div>

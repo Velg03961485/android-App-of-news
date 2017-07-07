@@ -1,0 +1,122 @@
+<div>
+  <ion-view>
+      <ion-nav-title style="position:fixed;left: 45px;right: 9px;">推荐 <i class="icon ion-ios-search-strong" style="float: right" ng-click="searchFn()"></i></ion-nav-title>
+    <ion-content>
+      <!--下拉刷新-->
+      <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <!--轮播图-->
+      <ion-slide-box pager-click="clickFn(index)" auto-play="true" does-continue="true">
+        <ion-slide>
+          <img style="width:100%;height: 200px" src="http://img5.imgtn.bdimg.com/it/u=3588483077,3481764334&fm=23&gp=0.jpg" alt="">
+        </ion-slide>
+        <ion-slide>
+          <img style="width:100%;height: 200px" src="http://img2.imgtn.bdimg.com/it/u=2171439900,1235073848&fm=23&gp=0.jpg" alt="">
+        </ion-slide>
+        <ion-slide>
+          <img style="width:100%;height: 200px" src="http://img2.imgtn.bdimg.com/it/u=931962710,2973427458&fm=23&gp=0.jpg" alt="">
+        </ion-slide>
+      </ion-slide-box>
+      <!--明星动态专区-->
+      <div>
+        <div style="width:100%;height: 50px;line-height: 50px" >
+          <span class="starTitle">{{mine.dataArr[1].title}} ></span>
+          <span class="moreTile" ng-click="starFn()">更多</span>
+        </div>
+        <div ng-repeat="item in mine.dataStar" class="dataStar" ng-click="mine.dataStarFn($index)">
+          <div style="height: 200px;width: 100%;position: relative" >
+            <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+            <p>{{item.title}}</p>
+            <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+          </div>
+        </div>
+      </div>
+      <!--美妆护肤-->
+      <div style="clear: both">
+        <div style="width: 100%;height: 50px;line-height: 50px">
+          <span class="starTitle">{{mine.dataArr[2].title}} ></span>
+          <span class="moreTile" ng-click="hufuFn()">更多</span>
+        </div>
+      </div>
+      <div ng-repeat="item in mine.meizhuang" class="dataStar" ng-click="mine.meizhuangFn($index)">
+        <div style="margin-right: 5px;height: 200px;width: 100%;position: relative" >
+          <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+          <p>{{item.title}}</p>
+          <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+        </div>
+      </div>
+      <!--娱乐八卦-->
+      <div style="clear: both">
+        <div style="width: 100%;height: 50px;line-height: 50px">
+          <span class="starTitle">{{mine.dataArr[3].title}} ></span>
+          <span class="moreTile" ng-click="yule()">更多</span>
+        </div>
+        <div ng-repeat="item in mine.yule" class="dataStar" ng-click="mine.yuleFn($index)">
+          <div style="height: 200px;width: 100%;position: relative" >
+            <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+            <p>{{item.title}}</p>
+            <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+          </div>
+        </div>
+      </div>
+      <!--美食精选-->
+      <div style="clear: both">
+        <div style="width: 100%;height: 50px;line-height: 50px">
+          <span class="starTitle">{{mine.dataArr[4].title}} ></span>
+          <span class="moreTile" ng-click="meishi()">更多</span>
+        </div>
+        <div ng-repeat="item in mine.food" class="dataStar" ng-click="mine.foodFn($index)">
+          <div style="height: 200px;width: 100%;position: relative" >
+            <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+            <p>{{item.title}}</p>
+            <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+          </div>
+        </div>
+      </div>
+      <!--星座运势-->
+      <div style="clear: both">
+        <div style="width: 100%;height: 50px;line-height: 50px" >
+          <span class="starTitle">{{mine.dataArr[5].title}} ></span>
+          <span class="moreTile" ng-click="xingzuo()">更多</span>
+        </div>
+        <div ng-repeat="item in mine.xingzuo" class="dataStar" ng-click="mine.xingzuoFn($index)">
+          <div style="height: 200px;width: 100%;position: relative" >
+            <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+            <p>{{item.title}}</p>
+            <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+          </div>
+        </div>
+      </div>
+      <!--减肥健身-->
+      <div style="clear: both">
+        <div style="width: 100%;height: 50px;line-height: 50px">
+          <span class="starTitle">{{mine.dataArr[6].title}} ></span>
+          <span class="moreTile" ng-click="jianfei()">更多</span>
+        </div>
+        <div ng-repeat="item in mine.jianfei" class="dataStar" ng-click="mine.jianfeiFn($index)">
+          <div style="height: 200px;width: 100%;position: relative" >
+            <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+            <p>{{item.title}}</p>
+            <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+          </div>
+        </div>
+      </div>
+      <!--旅游推荐-->
+      <div style="clear: both">
+        <div style="width: 100%;height: 50px;line-height: 50px">
+          <span class="starTitle">{{mine.dataArr[7].title}} ></span>
+          <span class="moreTile" ng-click="lvxing()">更多</span>
+        </div>
+        <div ng-repeat="item in mine.lvyou" class="dataStar" ng-click="mine.lvyouFn($index)">
+          <div style="height: 200px;width: 100%;position: relative" >
+            <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+            <p>{{item.title}}</p>
+            <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-view>
+</div>

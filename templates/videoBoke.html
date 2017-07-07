@@ -1,0 +1,23 @@
+<div>
+  <ion-view>
+    <ion-nav-title style="position:fixed; left: 45px;right: 9px;">视频播客</ion-nav-title>
+    <ion-content  overflow-scroll="true">
+      <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
+      <div class="list card">
+        <div class="item item-body "  ng-repeat="item in videoList">
+          <img style="width: 100%" class="full-image" ng-click="videoFn($index)" src="http://morguo.com/{{item.image}}">
+          <p style="text-align:center"><strong>{{item.subject}}</strong></p>
+          <p ng-click="videoFn($index)" style="text-align: center">{{item.intro}}</p>
+          <span style="color: #ccc" class="ion-thumbsup"></span>
+          <span style="color: #ccc;font-size: small">赞:{{item.liketimes}}</span>
+          &nbsp;
+          <span style="color: #ccc" class="ion-ios-chatbubble-outline"></span>
+          <span style="color: #ccc;font-size: small">评论:{{item.replies}}</span>
+        </div>
+      </div>
+      <ion-infinite-scroll icon="ion-loading-c" ng-if="!moredata" on-infinite="loadMore()" immediate-check="false" distance="10%">
+      </ion-infinite-scroll>
+    </ion-content>
+  </ion-view>
+</div>
+

@@ -1,0 +1,49 @@
+  <div>
+    <ion-view>
+      <ion-nav-title style="position:fixed; left: 45px;right: 9px;">明星专区</ion-nav-title>
+      <ion-content>
+        <!--下拉刷新-->
+        <ion-refresher
+          pulling-text="下拉刷新..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
+        <!--明星排行-->
+        <div>
+          <div style="height:50px; line-height: 50px">
+            <span style="color:red;float:left">明星排行榜 ></span>
+            <span style="float: right" ng-click="moreFn()">更多</span>
+          </div>
+          <ion-list>
+            <ion-item ng-repeat="item in mine.dataList" class="item item-avatar dark-border">
+              <img src="{{item.thumb}}" ng-click="mine.itemClick($index)">
+              <h2 ng-click="mine.itemClick($index)">{{item.name}}</h2>
+              <p ng-click="mine.itemClick($index)">粉丝数: {{item.fansCount}}</p>
+              <!--<span class="guanzhu" style="float: right;font-size: 12px;border: 1px solid red;border-radius: 10px;width: 60px;text-align: center;margin-top: -13%;color: red;" ng-click="guanzhu($index)">+关注</span>-->
+            </ion-item>
+          </ion-list>
+        </div>
+        <!--明星动态-->
+        <div style="clear: both">
+          <div style="width: 100%;height: 50px;line-height: 50px">
+            <span class="starTitle">明星动态</span>
+          </div>
+          <div ng-repeat="item in mine.dataArry" class="dataStar" ng-click="mine.dataDynamic($index)">
+            <div style="margin-right: 5px;width:100%;height: 200px;position: relative" >
+              <img style="width:100%;height: 130px" src="{{item.thumb}}" alt="">
+              <p>{{item.title}}</p>
+              <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!--上拉加载-->
+        <ion-infinite-scroll
+          icon="ion-loading-c"
+          ng-if="!moredata"
+          on-infinite="loadMore()"
+          immediate-check="false"
+          distance="10%">
+        </ion-infinite-scroll>
+      </ion-content>
+    </ion-view>
+  </div>

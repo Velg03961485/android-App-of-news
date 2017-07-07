@@ -1,0 +1,78 @@
+<div>
+  <ion-view>
+    <ion-nav-title style="position:fixed; left: 45px;right: 9px;">发现</ion-nav-title>
+    <ion-content>
+      <!--下拉刷新-->
+      <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <div>
+        <div class="row">
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.hufuFn()">
+            <i class="iconfont icon-meizhuang" ></i>
+            <p>美妆护肤</p>
+          </div>
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.meishiFn()">
+            <i class="iconfont icon-makefood" ></i>
+            <p>美食</p>
+          </div>
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.jianfeiFn()">
+            <i class="iconfont icon-jianshen" ></i>
+            <p>减肥健身</p>
+          </div>
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.yvleFn()">
+            <i class="iconfont icon-weibiaoti1" ></i>
+            <p>娱乐</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.xingzuoFn()">
+            <i class="iconfont icon-xingzuo" ></i>
+            <p>星座</p>
+          </div>
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.lvxingFn()">
+            <i class="iconfont icon-lvxing" ></i>
+            <p>旅行</p>
+          </div>
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.yonghuFn()">
+            <i class="iconfont icon-tuijianb" ></i>
+            <p>用户推荐</p>
+          </div>
+          <div class="col" style="text-align: center;color:purple;" ng-click="mine.tougaoFn()">
+            <i class="iconfont icon-tougao" ></i>
+            <p>投稿</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 100%;height: 10px;background-color: gainsboro"></div>
+      <div style="padding: 10px 5px">
+        <p>✨ 我的讨论区</p>
+        <div ng-repeat="item in mine.mines">
+          <a class="item item-thumbnail-left" ng-click="taolunFn($index)">
+            <img ng-src="{{item.thumb}}">
+            <span style="font-size: 18px">{{item.title}}</span>
+            <span style="color: red;font-size: 12px">今日: {{item.dailyCount}}</span>
+            <span style="color: #4c4c4c;font-size: 12px;float: right">{{item.lastTopicModify}}</span>
+            <p style="padding-top: 20px">{{item.lastTopicTitle}} </p>
+          </a>
+        </div>
+      </div>
+      <div style="width: 100%;height: 10px;background-color: gainsboro"></div>
+      <div style="padding: 10px 5px">
+        <p>✨ 热门讨论区</p>
+        <div ng-repeat="item in mine.hots" ng-click="remengX($index)">
+          <a class="item item-thumbnail-left" ng-click="retaolunFn(item.sid)">
+            <img ng-src="{{item.thumb}}">
+            <span style="font-size: 18px">{{item.title}}</span>
+            <span style="color: red;font-size: 12px">今日: {{item.dailyCount}}</span>
+            <span style="color: #4c4c4c;font-size: 12px;float: right">{{item.lastTopicModify}}</span>
+            <p style="padding-top: 20px">{{item.lastTopicTitle}}</p>
+          </a>
+        </div>
+      </div>
+    </ion-content>
+
+  </ion-view>
+
+</div>

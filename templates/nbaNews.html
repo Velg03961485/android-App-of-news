@@ -1,0 +1,31 @@
+<div name="nbaNews">
+  <ion-view>
+    <ion-nav-title style="position:fixed; left: 45px;right: 9px;">NBA资讯</ion-nav-title>
+    <ion-content>
+      <!--下拉刷新-->
+      <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <div class="list">
+        <a class="item item-thumbnail-left" ng-repeat="item in mine.data" ng-click="newsDetailFn($index)">
+          <img src="{{item.image}}">
+          <h2 style="padding-bottom:15% ">{{item.title}}</h2>
+          <span style="font-size:0.9rem;color: #4c4c4c;">{{item.index}}</span>
+          <span style="font-size:0.9rem;color: #4c4c4c;padding-left: 40%"><i class="icon ion-eye"></i> {{item.read}}</span>
+          <span style="font-size:0.9rem;color: #4c4c4c;padding-left: 3%"><i class="icon ion-chatbubble-working"></i> {{item.comment}}</span>
+        </a>
+      </div>
+      <!--上拉加载-->
+      <ion-infinite-scroll
+        icon="ion-loading-c"
+        ng-if="!moredata"
+        on-infinite="loadMore()"
+        immediate-check="false"
+        distance="10%">
+      </ion-infinite-scroll>
+    </ion-content>
+  </ion-view>
+</div>
+
+
