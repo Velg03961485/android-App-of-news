@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <style>
+    img{
+      width: 100%;
+      height:500px;
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="firstC">
+
+    <!--加载动画-->
+    <ion-spinner icon="dots"></ion-spinner>
+    <button ng-click="show()">Loading</button>
+
+    <button ng-click="showFloat($event)">浮动框</button>
+
+    <!--对话框-->
+    <button ng-click="showPopup()">显示对话框</button>
+
+    <!--确定框-->
+     <button ng-click="showConfirm()">确认框</button>
+
+    <!--警告框-->
+    <button ng-click="showAlert()">警告框</button>
+
+    <!--<ion-slide-box does-continue="true" auto-play="true" slide-interval="2000" show-pager="false">-->
+    <ion-slide-box ng-click="clickFn(index)">
+      <ion-slide>
+        <img src="http://img5.imgtn.bdimg.com/it/u=3928681034,4214212513&fm=23&gp=0.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="http://img3.imgtn.bdimg.com/it/u=909379783,2244633824&fm=23&gp=0.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="http://img0.imgtn.bdimg.com/it/u=4080971111,4178097233&fm=23&gp=0.jpg" alt="">
+      </ion-slide>
+    </ion-slide-box>
+
+
+    <!--浮动框-->
+    <ion-popover-view>
+      <ion-header-bar>
+        <h1 class="title">我是浮动框</h1>
+      </ion-header-bar>
+
+      <ion-content>
+
+      </ion-content>
+    </ion-popover-view>
+  </div>
+</body>
+<script>
+  var app = angular.module("myApp" , ["ionic"]);
+  app.controller("firstC" , function($scope , $ionicSlideBoxDelegate , $ionicLoading , $ionicPopover , $ionicPopup){
+
+      var template = '<ion-popover-view><ion-header-bar> <h1 class="title">我是浮动框</h1></ion-header-bar><ion-content><button ng-click="closeFn()">关闭</button></ion-content> </ion-popover-view>';
+
+      $scope.popover = $ionicPopover.fromTemplate(template , {
+        scope:$scope,
+        backdropClickToClose:true
+      });
+      //初始化一个浮动框
+  //    $ionicPopover.initialize({
+  //      focusFirstInput:true,
+  //      backdropClickToClose:true,
+  //      hardwareBackButtonClose:true
+  //    });
+
+      $scope.closeFn = function(){
+        $scope.popover.hide();
+      };
+
+      //清除浮动框(浮动框已经被清除了)
+      $scope.$on("$destroy" , function(){
+        console.log("浮动框被清除了")
+        $scope.popover.remove();
+      })
+
+      //隐藏浮动框是触发的方法(浮动框已经被隐藏了)
+      $scope.$on("popover.hidden" , function(){
+        console.log("我被隐藏了")
+      })
+
+      //显示对话框的方法
+      $scope.showFloat = function(event){
+  //      $ionicPopover.show();
+        $scope.popover.show(event);
+      };
+
+      //显示对话框的方法
+      $scope.showPopup = function(){
+        $scope.data = {};
+
+      //自定义弹出的对话框
+      var myPopup = $ionicPopup.show({
+        template:"<a href='#'>我是对话框</a>",
+        title:"标题",
+        scope:$scope,
+        subTitle:"子标题",
+        buttons:[
+          {
+            text:"取消",
+            type:"button-balanced",
+            onTap:function (e) {
+              console.log("我是取消按钮");
+            }
+          },
+          {
+            text:"确定",
+            type:"button-positive",
+            onTap:function(e){
+              console.log("我是确定的")
+              myPopup.close();
+            }
+          }
+        ]
+      })
+    }
+
+      //显示确认框
+      $scope.showConfirm = function(){
+        var confirm = $ionicPopup.confirm({
+          title:"我是确认框",
+          template:"<a href='#'>你可以选择一个按钮</a>"
+        });
+
+        //判断用户的点击事件
+        confirm.then(function(res){
+          if(res){
+            console.log("用户选择了确定")
+          }else{
+            console.log("用户选择了取消");
+          }
+        })
+      };
+
+      //显示警告框的方法
+      $scope.showAlert = function(){
+        var alertPopup = $ionicPopup.alert({
+          title:"我是警告框",
+          template:"我要警告你了"
+        });
+        //判断用户的点击事件
+        alertPopup.then(function(res){
+          if(res){
+            console.log("用户选择了确定")
+          }else{
+            console.log("用户选择了取消");
+          }
+        })
+      };
+      //加载
+      $scope.show = function(){
+        $ionicLoading.show({
+          template:"Loading......",
+          delay:500,
+  //        duration:6000,
+          noBackdrop:false
+        })
+        setTimeout(function () {
+          $ionicLoading.hide(true)
+        } , 5000)
+      };
+
+      $scope.clickFn = function(index){
+        $ionicSlideBoxDelegate.slide(index , 2000);
+        $ionicSlideBoxDelegate.next(1000)
+      }
+  })
+</script>
+</html>
