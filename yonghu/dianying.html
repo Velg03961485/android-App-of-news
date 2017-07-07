@@ -1,0 +1,21 @@
+<div>
+  <ion-refresher
+    pulling-text="下拉刷新..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div ng-repeat="item in mine.videos" style="float: left;width: 50%;padding:0px 1.2%;" ng-click="mine.dianyingvideo($index)">
+    <div style="margin-right: 5px;height: 200px;width: 100%;position: relative" >
+      <img style="width: 100%;height: 130px" src="{{item.thumb}}" alt="">
+      <p>{{item.title}}</p>
+      <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.length}}</p>
+    </div>
+  </div>
+  <!--上拉加载-->
+  <ion-infinite-scroll
+    icon="ion-loading-c"
+    ng-if="!moredata"
+    on-infinite="loadMore()"
+    immediate-check="false"
+    distance="10%">
+  </ion-infinite-scroll>
+</div>
