@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+</head>
+<body ng-app="myapp">
+  <ion-side-menus>
+    <!-- 中间内容 -->
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar bar-dark">
+        <ion-nav-buttons>
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+          <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-title>
+            home
+        </ion-nav-title>
+      </ion-nav-bar>
+      <!--界面-->
+      <ion-nav-view>
+        <ion-view>
+          <ion-content ng-controller="contentC" padding="true">
+            <ion-list>
+              <ion-item ng-repeat="item in items">{{item}}</ion-item>
+            </ion-list>
+            <button class="button button-positive" ng-click="leftFn()">left</button>
+            <button class="button button-positive" ng-click="rightFn()">right</button>
+          </ion-content>
+        </ion-view>
+      </ion-nav-view>
+    </ion-side-menu-content>
+
+    <!-- 左侧菜单 -->
+    <ion-side-menu side="left">
+      <h1>我是左侧的界面</h1>
+    </ion-side-menu>
+
+    <!-- 右侧菜单 -->
+    <ion-side-menu side="right">
+      <h1>我是右侧的界面</h1>
+    </ion-side-menu>
+  </ion-side-menus>
+</body>
+<script>
+    var app = angular.module("myapp" , ["ionic"]);
+    app.controller("contentC" , function($scope , $ionicSideMenuDelegate){
+      $scope.items = [1 , 2 , 4 , 5 , 6]
+      $scope.leftFn = function(){
+        $ionicSideMenuDelegate.toggleLeft();
+      };
+      $scope.rightFn = function(){
+        $ionicSideMenuDelegate.toggleRight();
+      }
+    })
+</script>
+</html>
