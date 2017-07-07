@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="lib/ionic/css/ionic.min.css">
+  <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="firstC">
+  <div on-touch="touchFn()" on-drag-down="dragDownFn()" on-drag-up="dragUpFn()" on-drag="dragFn()" on-swipe="swipeFn()" on-swipe-right="swipeRightFn()" on-double-tap="doubleTapFn()" on-tap="tapFn()" on-hold="holdFn()" style="width: 100%; height:400px; background: yellow"></div>
+</div>
+
+</body>
+<script>
+  var app = angular.module("myApp" , ["ionic"]);
+  app.controller("firstC" , function ($scope) {
+    $scope.holdFn = function () {
+      console.log("我是长按手势");
+    }
+
+    $scope.tapFn = function () {
+      console.log("我是轻拍手势");
+    }
+
+    $scope.doubleTapFn = function () {
+      console.log("我是双击手势");
+    }
+
+    // 触摸
+    $scope.touchFn = function () {
+      console.log("我是触摸事件");
+    }
+
+    // 放开
+    $scope.releaseFn = function () {
+      console.log("我是放开事件");
+    }
+
+    // 拖拽
+    $scope.dragFn = function () {
+      console.log("我是拖拽事件");
+    }
+
+
+    // 向上拖拽
+    $scope.dragUpFn = function () {
+      console.log("我是向上拖拽事件");
+    }
+
+    // 向下拖拽
+    $scope.dragDownFn = function () {
+      console.log("我是向下拖拽事件");
+    }
+
+    // 轻扫
+    $scope.swipeFn = function () {
+      console.log("我是轻扫事件");
+    }
+
+
+    // 向右轻扫
+    $scope.swipeRightFn = function () {
+      console.log("我是向右轻扫事件");
+    }
+
+
+
+
+
+  });
+</script>
+</html>
