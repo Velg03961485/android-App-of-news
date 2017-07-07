@@ -1,0 +1,27 @@
+<div>
+  <!--下拉刷新-->
+  <ion-refresher
+    pulling-text="下拉刷新..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div class="list card" ng-repeat="item in mine.topics" ng-click="fansDetailFn($index)">
+    <div class="item item-avatar" >
+      <img ng-src="{{item.userAvatar}}">
+      <h3>{{item.userNick}}</h3>
+      <p>{{item.lastReplyTime}}</p>
+    </div>
+    <h4>{{item.title}}</h4>
+    <p>{{item.content}}</p>
+    <div ng-repeat="item in item.photoes">
+      <img style="width:33%;float: left" ng-src="{{item.thumb}}">
+    </div>
+  </div>
+  <!--上拉加载-->
+  <ion-infinite-scroll
+    icon="ion-loading-c"
+    ng-if="!moredata"
+    on-infinite="loadMore()"
+    immediate-check="false"
+    distance="10%">
+  </ion-infinite-scroll>
+</div>

@@ -1,0 +1,25 @@
+<div>
+  <!--下拉刷新-->
+  <ion-refresher
+    pulling-text="下拉刷新..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div class="list">
+    <a class="item item-thumbnail-left" ng-repeat="news in mine.dataArr" style="position: relative"  ng-click="dongtaiFn($index)">
+      <img ng-src="{{news.thumb}}">
+      <h2 style="padding-bottom: 10px">{{news.title}}</h2>
+      <span style="font-size:14px;color:#4c4c4c"> 播放次数: {{news.playCount}} </span>
+      <span style="font-size:14px;padding-left: 6%;color:#4c4c4c"> 弹幕: {{news.danmuCount}}</span>
+      <span style="font-size:14px;position: absolute;bottom: 10%;left: 15%;color: white">{{news.length}}</span>
+      <p style="padding-top:3%;font-size:14px;">{{news.publishTime}}</p>
+    </a>
+  </div>
+  <!--上拉加载-->
+  <ion-infinite-scroll
+    icon="ion-loading-c"
+    ng-if="!moredata"
+    on-infinite="loadMore()"
+    immediate-check="false"
+    distance="10%">
+  </ion-infinite-scroll>
+</div>

@@ -1,0 +1,30 @@
+<div>
+
+  <ion-view>
+    <ion-nav-title><button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">排行榜</span></ion-nav-title>
+    <ion-content overflow-scroll="true" >
+      <!--下拉刷新-->
+      <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <div class="list">
+        <a class="item item-avatar" ng-repeat="item in mine.dataList" >
+          <img src="{{item.thumb}}"  ng-click="starMoreFn($index)">
+          <span  ng-click="starMoreFn($index)">{{item.name}}</span>
+          <span style="color: red;float: right;font-size: 12px;"  ng-click="starMoreFn($index)">排名: {{item.rank}}</span>
+          <p  ng-click="starMoreFn($index)">粉丝数: {{item.fansCount}}</p>
+          <span style="float: right;font-size: 12px;border: 1px solid #ccc;border-radius: 10px;width: 60px;text-align: center;margin-top: -7%"  ng-click="guanzhu($index)">+关注</span>
+        </a>
+      </div>
+      <!--上拉加载-->
+      <ion-infinite-scroll
+        icon="ion-loading-c"
+        ng-if="!moredata"
+        on-infinite="loadMore()"
+        immediate-check="false"
+        distance="10%">
+      </ion-infinite-scroll>
+    </ion-content>
+  </ion-view>
+</div>

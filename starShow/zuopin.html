@@ -1,0 +1,10 @@
+<div style="margin-top: 5%">
+  <div ng-repeat="item in mine.dataArr" class="dataStar" ng-click="mine.dataStarFn($index)">
+    <div style="height: 200px;width: 100%;position: relative" >
+      <img style="width: 100%;height: 130px;border-radius: 5%" src="{{item.thumb}}" alt="">
+      <p>{{item.title}}</p>
+      <p style="position: absolute;right: 10px;bottom: 60px;color: white">{{item.publishTime}}</p>
+    </div>
+  </div>
+</div>
+

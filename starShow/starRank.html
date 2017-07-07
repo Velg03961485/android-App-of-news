@@ -1,0 +1,26 @@
+<div name="starRank">
+  <ion-view>
+    <ion-nav-title><button ng-click="goBack()" class="button button-icon icon ion-ios-arrow-left" style="float: left;padding-top: 1.3%"></button><span style="padding-left: -20px">{{dataArr.name}}</span></ion-nav-title>
+    <ion-content>
+        <!--头部导航-->
+        <div class="item item-avatar rank" style="background:url({{dataArr.thumb}}) no-repeat; background-size: 100%;background-position-y: -200px;">
+          <img src="{{dataArr.thumb}}">
+          <span style="color:white;">粉丝 {{dataArr.fansCount}}</span>
+          <button style="border: 1px solid white;background:white; opacity: 0.5;margin-left:14px;border-radius: 10px" ng-click="baiduDetailFn()">详细消息</button>
+          <p style="color:white;">排名 第{{dataArr.rank}}位</p>
+        </div>
+      <!--跳转的一栏-->
+        <div style="border-bottom: 1px solid #CCC">
+          <div style="width:95%;height:40px;line-height: 40px">
+            <span class="aaa" style="padding-left: 7%;font-size: 1rem" ng-click="dongtaiFn()">最新动态</span>
+            <span class="aaa" style="padding-left: 18%;font-size: 1rem" ng-click="zuopinFn()">作品集</span>
+            <span class="aaa" style="padding-left:18%;font-size: 1rem" ng-click="fansFn()">粉丝区</span>
+          </div>
+        </div>
+        <div ui-view="newsDong"></div>
+        <div ui-view="zuopin"></div>
+        <div ui-view="fans" style="height:600px"></div>
+    </ion-content>
+  </ion-view>
+  <ion-nav-view name="newsVideo"></ion-nav-view>
+</div>

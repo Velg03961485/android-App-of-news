@@ -1,0 +1,41 @@
+<div>
+  <!--下拉刷新-->
+  <ion-refresher
+    pulling-text="下拉刷新..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+  <div class="list card">
+    <div class="item item-avatar">
+      <img src="{{mine.topic.userAvatar}}">
+      <h3>{{mine.topic.userNick}}</h3>
+      <p>{{mine.topic.lastReplyTime}}</p>
+    </div>
+    <h4>{{mine.topic.title}}</h4>
+    <p>{{mine.topic.content}}</p>
+    <div ng-repeat="item in mine.topic.photoes">
+      <img width="100%" ng-src="{{item.thumb}}">
+    </div>
+  </div>
+  <div style="height: 10px;background:#ccc;width: 100%"></div>
+  <div style="margin-top: 5px">
+    <p>全部评论</p>
+    <div class="list">
+      <a class="item item-avatar" ng-repeat="item in mine.posts" style="position: relative">
+        <img ng-src="{{item.userAvatar}}">
+        <h2>{{item.userNick}}</h2>
+        <span style="font-size: 12px">{{item.floor}}楼</span>
+        <span style="font-size: 12px">{{item.postTime}}</span>
+        <p>{{item.content}}</p>
+        <span style="position: absolute;top:20%; left:90%; color:#4c4c4c">{{item.likeCount}} <i class="iconfont icon-heart"></i></span>
+      </a>
+    </div>
+  </div>
+  <!--上拉加载-->
+  <ion-infinite-scroll
+    icon="ion-loading-c"
+    ng-if="!moredata"
+    on-infinite="loadMore()"
+    immediate-check="false"
+    distance="10%">
+  </ion-infinite-scroll>
+</div>
