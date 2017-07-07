@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+</head>
+<body ng-app="starter">
+<div ng-controller="firstC">
+
+  <!--导航条-->
+  <ion-header-bar class="bar-balanced">
+    <h1 class="title">{{title}}</h1>
+  </ion-header-bar>
+  <ion-tabs class="tabs-icon-top">
+    <ion-tab title="第一" icon-on="ion-home" icon-off="ion-ios-home-outline" on-select="myFn(1)">
+      <ion-view>
+        <ion-content class="energized-bg">
+          第一个页面
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+
+    <ion-tab title="第二" icon-on="ion-home" icon-off="ion-ios-home-outline" badge="12" badge-style="badge-assertive" on-select="myFn(2)">
+      <ion-view>
+        <ion-content class="positive-bg">
+          第二个页面
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+
+    <ion-tab title="第三" icon-on="ion-home" icon-off="ion-ios-home-outline" disabled="true">
+      <ion-view>
+        <ion-content class="calm-bg">
+          第三个页面
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+  </ion-tabs>
+</div>
+</body>
+
+<script>
+  var app = angular.module("starter" , ['ionic']);
+
+  //防止导航条在上面
+  app.config(function ($ionicConfigProvider) {
+    $ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.ios.tabs.position('bottom');
+    $ionicConfigProvider.platform.android.tabs.style('standard');
+    $ionicConfigProvider.platform.android.tabs.position('standard');
+
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+    $ionicConfigProvider.platform.android.navBar.alignTitle('left');
+
+    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
+    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
+
+    $ionicConfigProvider.platform.ios.views.transition('ios');
+    $ionicConfigProvider.platform.android.views.transition('android');
+
+  });
+
+  app.controller("firstC" , function ($scope) {
+    $scope.title = "张三";
+
+    $scope.myfn = function (myId) {
+      $scope.title = "第" + myId + "个界面";
+      console.log("jlkasdf");
+    }
+  });
+</script>
+</html>
